@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Cook</string>
+    <string name="Halo">Hallo People!</string>
+    <string name="keinginan">What do you want to do today?</string>
+    <string name="trending">Katagori</string>
+    <string name="trending1">Resep Baru</string>
 </resources>

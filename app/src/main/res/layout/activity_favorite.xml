@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FavoriteActivity">
+
+
+    <EditText
+        android:id="@+id/txt_pencarian"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Searce" />
+
+    <Button
+        android:id="@+id/btn_pencarian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_pencarian"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="Pencarian" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recPencarian"
+        android:layout_width="match_parent"
+        android:layout_height="543dp"
+        android:layout_below="@+id/btn_pencarian"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="8dp" />
+</RelativeLayout>
