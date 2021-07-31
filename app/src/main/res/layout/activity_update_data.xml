@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CatatanResep.updateData"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/new_resep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nama Resep"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/new_bahanresep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Bahan Resep"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/new_langkahresep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Langkah Resep"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update" />
+
+</LinearLayout>

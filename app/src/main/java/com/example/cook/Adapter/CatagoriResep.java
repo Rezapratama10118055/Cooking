@@ -48,10 +48,12 @@ public class CatagoriResep extends RecyclerView.Adapter<CatagoriResep.ViewHolder
         holder.relativeCategories.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(CatagoriResep.this.context, ListKatagoriActivity.class);
-                intent.putExtra("Katagori", (Serializable) CatagoriResep.this.etresep.get(position));
+                intent.putExtra("kay",etresep.get(position).getKey());
+                intent.putExtra("katagori",etresep.get(position).getCategory());
+                intent.putExtra("Url",etresep.get(position).getUrl());
                 context.startActivity(intent);
+
             }
         });
 ;

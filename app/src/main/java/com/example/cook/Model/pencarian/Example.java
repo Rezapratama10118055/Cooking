@@ -16,7 +16,7 @@ public class Example {
     private Boolean status;
     @SerializedName("results")
     @Expose
-    private List<Object> results = null;
+    private List<Result> results = null;
 
     public String getMethod() {
         return method;
@@ -34,11 +34,11 @@ public class Example {
         this.status = status;
     }
 
-    public List<Object> getResults() {
+    public List<Result> getResults() {
         return results;
     }
 
-    public void setResults(List<Object> results) {
+    public void setResults(List<Result> results) {
         this.results = results;
     }
 

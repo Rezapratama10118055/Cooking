@@ -35,7 +35,7 @@ public class Example {
     }
 
     public Results getResults() {
-        return  results;
+        return results;
     }
 
     public void setResults(Results results) {

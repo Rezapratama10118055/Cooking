@@ -44,19 +44,14 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 app:cardBackgroundColor="#000000"
-                app:cardCornerRadius="10dp" />
+                app:cardCornerRadius="10dp" >
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/katagori"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_below="@+id/scorll"
-                android:layout_gravity="bottom"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/bg_putih_katagori"
-                app:menu="@menu/menu_katagori" />
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/asetmasak" />
+            </androidx.cardview.widget.CardView>
 
 
             <TextView
@@ -103,6 +98,7 @@
 
     </ScrollView>
 
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menu4"
         android:layout_width="match_parent"
@@ -114,6 +110,6 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        android:background="@drawable/warna_menu"
+        android:background="@drawable/bg_detail"
         app:menu="@menu/menu_bottom" />
 </RelativeLayout>

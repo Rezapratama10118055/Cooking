@@ -12,18 +12,22 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cook.Model.Result;
+import com.example.cook.Model.bahan.Example;
 import com.example.cook.Model.bahan.Results;
 import com.example.cook.R;
 
 import java.util.List;
 
 public class BahanAdapter extends RecyclerView.Adapter<BahanAdapter.ViewHolder> {
-    List<com.example.cook.Model.bahan.Results> examples;
+    List<String> examples;
     private Context context;
 
-    public BahanAdapter(List<com.example.cook.Model.bahan.Results>example){
+    public BahanAdapter(List<String> example){
         examples = example;
     }
+
+
+
 
     @NonNull
     @Override
@@ -35,8 +39,8 @@ public class BahanAdapter extends RecyclerView.Adapter<BahanAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull BahanAdapter.ViewHolder holder, int position) {
-        Results results = examples.get(position);
-        holder.bahanbahan.setText(results.getIngredient().get(position));
+
+        holder.bahanbahan.setText(examples.get(position));
     }
 
     @Override

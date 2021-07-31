@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imagewr"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="14dp"
+        app:srcCompat="@drawable/book" />
+
+    <TextView
+        android:id="@+id/heding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imagewr"
+        android:layout_marginTop="85dp"
+        android:fontFamily="@font/arbutus"
+        android:gravity="center"
+        android:text="HAEDLINE"
+        android:textColor="#62d2a2"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/silde_doc"
+        android:layout_width="match_parent"
+        android:layout_height="149dp"
+        android:layout_below="@+id/heding"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="46dp"
+        android:layout_marginBottom="122dp"
+        android:fontFamily="@font/archivo_narrow"
+        android:gravity="center"
+        android:text="In this tutorial I will be showing you how to create Onboarding screen in Android Studio from scratch without using any library."
+        android:textAlignment="center"
+        android:textSize="30sp" />
+</RelativeLayout>

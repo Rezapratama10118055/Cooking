@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".Viewpager.ViewPageActivity">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/page"
+        android:layout_width="match_parent"
+        android:layout_height="640dp">
+
+    </androidx.viewpager.widget.ViewPager>
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="122dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/page"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="-2dp"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/Kembali"
+        android:layout_width="139dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/gradiant"
+        android:text="Kembali"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/Lanjut"
+        android:layout_width="142dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/gradiant"
+        android:text="Lanjutkan"
+        android:textColor="#FFFFFF" />
+
+</RelativeLayout>

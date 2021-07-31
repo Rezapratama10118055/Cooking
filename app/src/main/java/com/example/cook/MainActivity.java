@@ -6,16 +6,19 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.cook.API.ApiResep;
 import com.example.cook.API.ApiService;
 import com.example.cook.Adapter.Adapterviewdata;
 import com.example.cook.Adapter.CatagoriResep;
+import com.example.cook.CatatanResep.CatatanResep;
 import com.example.cook.Model.Example;
 import com.example.cook.Model.Result;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -26,6 +29,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Query;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter Adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ApiService apiService;
+
     private List<Example> item_makans;
     Adapterviewdata adapter;
     CatagoriResep adpter1;
@@ -61,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
         waktu1 = findViewById(R.id.waktu_pencarian);
         porsi1 = findViewById(R.id.porsi);
         tingkat1 = findViewById(R.id.tingkat);
+
+
+
+
         LinearLayoutManager layoutManagerHorizontal = new LinearLayoutManager(this);
         layoutManagerHorizontal.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView1.setLayoutManager(layoutManagerHorizontal);
@@ -83,6 +92,10 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.pencarian:
                         startActivity(new Intent(getApplicationContext(), FavoriteActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.favorite:
+                        startActivity(new Intent(getApplicationContext(), CatatanResep.class));
                         overridePendingTransition(0, 0);
                         return true;
 
@@ -144,8 +157,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }
 
+
+
+        }
+
+//    public void setSearchResep(String query){
+//
+//    }
 
 
 

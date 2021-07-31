@@ -1,14 +1,17 @@
 package com.example.cook.Model;
 
 
+import java.io.Serializable;
 import java.util.List;
 import javax.annotation.Generated;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import io.realm.RealmObject;
+
 @Generated("jsonschema2pojo")
-public class Example {
+public class Example  {
 
     @SerializedName("method")
     @Expose

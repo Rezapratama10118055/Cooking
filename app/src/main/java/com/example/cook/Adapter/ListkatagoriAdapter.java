@@ -13,7 +13,8 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.cook.Model.Result;
+import com.example.cook.Model.KatagoriList.Example;
+import com.example.cook.Model.KatagoriList.Result;
 import com.example.cook.PenjelasanDetail;
 import com.example.cook.R;
 
@@ -21,11 +22,12 @@ import java.io.Serializable;
 import java.util.List;
 
 public class ListkatagoriAdapter extends RecyclerView.Adapter<ListkatagoriAdapter.ViewHolder>  {
-    List<com.example.cook.Model.Result> resep;
+    List<com.example.cook.Model.KatagoriList.Result> resep;
     private Context context;
 
-    public ListkatagoriAdapter(List<com.example.cook.Model.Result> exaResep){
-        resep = exaResep;
+
+    public ListkatagoriAdapter(List<com.example.cook.Model.KatagoriList.Result> resep) {
+        this.resep = resep;
     }
 
 
@@ -39,17 +41,23 @@ public class ListkatagoriAdapter extends RecyclerView.Adapter<ListkatagoriAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ListkatagoriAdapter.ViewHolder holder, int position) {
-        Result exaResult = resep.get(position);
-        holder.judulresep.setText(exaResult.getTitle());
-        holder.wakturesep.setText(exaResult.getTimes());
-        holder.porsiresep.setText(exaResult.getPortion());
-        holder.tingkatresep.setText(exaResult.getDificulty());
+
+        holder.judulresep.setText(resep.get(position).getTitle());
+        holder.wakturesep.setText(resep.get(position).getTimes());
+        holder.porsiresep.setText(resep.get(position).getPortion());
+        holder.tingkatresep.setText(resep.get(position).getDificulty());
         holder.relativeCategories.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent intent = new Intent(ListkatagoriAdapter.this.context, PenjelasanDetail.class);
-                intent.putExtra("penjelasanLengkap", (Serializable) ListkatagoriAdapter.this.resep.get(position));
+                intent.putExtra("kay",resep.get(position).getKey());
+                intent.putExtra("penjelasanLengkap",resep.get(position).getTitle());
+                intent.putExtra("porsi",resep.get(position).getPortion());
+                intent.putExtra("kesulitan",resep.get(position).getDificulty());
+                intent.putExtra("waktu",resep.get(position).getTimes());
+                intent.putExtra("gambar",resep.get(position).getThumb());
+
                 context.startActivity(intent);
             }
         });
@@ -76,7 +84,7 @@ public class ListkatagoriAdapter extends RecyclerView.Adapter<ListkatagoriAdapte
             judulresep = itemView.findViewById(R.id.tvTitleRecipe);
             porsiresep = itemView.findViewById(R.id.tvPortion);
             wakturesep = itemView.findViewById(R.id.tvTimes);
-            gambarresep = itemView.findViewById(R.id.gambartampil);
+            gambarresep = itemView.findViewById(R.id.gambarni);
             tingkatresep = itemView.findViewById(R.id.tvDificulty);
             relativeCategories = itemView.findViewById(R.id.cvListRecipe);
 

@@ -1,6 +1,8 @@
 package com.example.cook.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,23 +12,33 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.cook.Model.Result;
+import com.example.cook.FavoriteActivity;
+import com.example.cook.Model.pencarian.Example;
+import com.example.cook.Model.pencarian.Result;
+import com.example.cook.PenjelasanDetail;
 import com.example.cook.R;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
-public class AdapterPencarian extends RecyclerView.Adapter<AdapterPencarian.ViewHolder> implements Filterable {
-    List<Result> examples;
-    List<Result> examplesfull;
+public class AdapterPencarian extends RecyclerView.Adapter<AdapterPencarian.ViewHolder>{
+    com.example.cook.Model.pencarian.Example mData;
+
     private Context context;
 
-    public AdapterPencarian(List<Result>example){
-        examples = example;
-        examplesfull = new ArrayList<>(example);
+//    public AdapterPencarian(List<com.example.cook.Model.pencarian.Result> example) {
+//        mData = example;
+//
+//    }
+
+    public AdapterPencarian(com.example.cook.Model.pencarian.Example item_makans, Context context) {
+        this.mData = item_makans;
+        this.context = context;
+
     }
 
 
@@ -40,75 +52,60 @@ public class AdapterPencarian extends RecyclerView.Adapter<AdapterPencarian.View
 
     @Override
     public void onBindViewHolder(@NonNull AdapterPencarian.ViewHolder holder, int position) {
+        holder.Judul.setText(mData.getResults().get(position).getTitle());
+        holder.tingkat.setText(mData.getResults().get(position).getDifficulty());
+        holder.waktu.setText(mData.getResults().get(position).getTimes());
+        holder.porsi.setText(mData.getResults().get(position).getServing());
 
-//        holder.JudulMeme.setText(examples.get(position).getKey());
-//
-//        Glide.with(context)
-//                .asBitmap()
-//                .load(examples.get(position).getThumb())
-//                .override(200)
-//                .into(holder.Meme);
-        Result food = examples.get(position);
+        Glide.with(context)
+                .asBitmap()
+                .load(mData.getResults().get(position).getThumb())
+                .into(holder.gambarpencarian);
 
-        holder.bind(food);
+        holder.cffood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdapterPencarian.this.context, PenjelasanDetail.class);
+                intent.putExtra("kay",mData.getResults().get(position).getKey());
+                intent.putExtra("penjelasanLengkap",mData.getResults().get(position).getTitle());
+                intent.putExtra("porsi",mData.getResults().get(position).getServing());
+                intent.putExtra("kesulitan",mData.getResults().get(position).getDifficulty());
+                intent.putExtra("waktu",mData.getResults().get(position).getTimes());
+                intent.putExtra("gambar",mData.getResults().get(position).getThumb());
+
+                context.startActivity(intent);
+            }
+        });
 
 
     }
 
     @Override
     public int getItemCount() {
-        return examples.size();
+        return mData.getResults().size();
     }
+
+
+
+
+
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView JudulMeme;
-        private ImageView Meme;
+        private TextView Judul, waktu, tingkat, porsi;
+        private ImageView gambarpencarian;
+        private CardView cffood;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            JudulMeme = itemView.findViewById(R.id.Judul_pencarian);
-            Meme = itemView.findViewById(R.id.pencarian_gambar);
+            Judul = itemView.findViewById(R.id.jdl);
+            gambarpencarian = itemView.findViewById(R.id.hasil_gambar);
+            waktu = itemView.findViewById(R.id.waktu_serce);
+            tingkat = itemView.findViewById(R.id.tingkat);
+            porsi = itemView.findViewById(R.id.porsi);
+            cffood = itemView.findViewById(R.id.cvFood);
         }
 
-        public void bind(Result food) {
-//            this.itemView.setId(food);
-//            itemView.executePendingBindings();
-        }
+
     }
-
-    @Override
-    public Filter getFilter() {
-        return examplesfilter;
-    }
-    private Filter examplesfilter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence charSequence) {
-            List<Result>filterlist = new ArrayList<>();
-            if (charSequence==null || charSequence.length()==0){
-                filterlist.addAll(examplesfull);
-
-            }else {
-                String filterpeten = charSequence.toString().toLowerCase().trim();
-                for (Result result:examplesfull){
-                    if (result.getKey().toLowerCase().contains(filterpeten)){
-                        filterlist.add(result);
-
-                    }
-                }
-            }
-            FilterResults results = new FilterResults();
-            results.values = filterlist;
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-          examples.clear();
-          examples.addAll((List)filterResults.values);
-          notifyDataSetChanged();
-
-        }
-    };
-
 }

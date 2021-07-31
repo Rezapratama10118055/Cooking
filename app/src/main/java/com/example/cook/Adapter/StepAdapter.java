@@ -17,11 +17,11 @@ import com.example.cook.R;
 import java.util.List;
 
 public class StepAdapter extends RecyclerView.Adapter<StepAdapter.ViewHolder> {
-    List<com.example.cook.Model.bahan.Results> examples;
+    List<String> examples;
     private Context context;
 
 
-    public StepAdapter(List<com.example.cook.Model.bahan.Results>example){
+    public StepAdapter(List<String>example){
         examples = example;
     }
 
@@ -29,14 +29,14 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.ViewHolder> {
     @Override
     public StepAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
-        View V = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_ingredients, parent, false);
+        View V = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_steps, parent, false);
         return new StepAdapter.ViewHolder(V);
     }
 
     @Override
     public void onBindViewHolder(@NonNull StepAdapter.ViewHolder holder, int position) {
-        Results results = examples.get(position);
-        holder.step.setText(results.getStep().get(position));
+
+        holder.step.setText(examples.get(position));
     }
 
     @Override

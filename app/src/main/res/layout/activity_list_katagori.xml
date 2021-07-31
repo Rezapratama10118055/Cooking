@@ -11,17 +11,17 @@
      android:layout_height="match_parent"
      android:orientation="vertical">
 
+     <TextView
+         android:id="@+id/tvTitle"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="12dp"
+         android:textColor="@color/black"
+         android:textSize="24sp"
+         android:textStyle="bold" />
 
 
 
-    <TextView
-        android:id="@+id/tvTitleRecipe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:textColor="@color/colorAccent"
-        android:textSize="24sp"
-        android:textStyle="bold" />
 
      <androidx.recyclerview.widget.RecyclerView
          android:id="@+id/rvlistkatagori"

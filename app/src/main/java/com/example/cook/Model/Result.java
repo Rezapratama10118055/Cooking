@@ -4,8 +4,12 @@ import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
+import io.realm.RealmObject;
+
 @Generated("jsonschema2pojo")
-public class Result {
+public class Result extends RealmObject implements Serializable {
 
     @SerializedName("title")
     @Expose

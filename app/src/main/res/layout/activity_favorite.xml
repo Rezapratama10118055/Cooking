@@ -7,30 +7,28 @@
     tools:context=".FavoriteActivity">
 
 
-    <EditText
-        android:id="@+id/txt_pencarian"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Searce" />
-
-    <Button
-        android:id="@+id/btn_pencarian"
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_pencarian"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:text="Pencarian" />
+        android:layout_marginTop="58dp"
+        android:background="@drawable/bg_rounded"
+        android:text="Hasil Pencarian Resep"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recPencarian"
         android:layout_width="match_parent"
-        android:layout_height="543dp"
-        android:layout_below="@+id/btn_pencarian"
+        android:layout_height="601dp"
+        android:layout_below="@+id/textView2"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="8dp" />
+
 </RelativeLayout>

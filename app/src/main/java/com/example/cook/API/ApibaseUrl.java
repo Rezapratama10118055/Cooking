@@ -5,6 +5,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Apiartikel {
+public class ApibaseUrl {
+    public static final String URL_ROOT_HTTP = "https://masak-apa.tomorisakura.vercel.app" ;
+
 
 }

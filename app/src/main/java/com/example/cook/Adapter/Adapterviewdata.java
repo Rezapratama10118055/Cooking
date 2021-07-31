@@ -3,6 +3,7 @@ package com.example.cook.Adapter;
 import android.content.Context;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +51,7 @@ public class Adapterviewdata extends RecyclerView.Adapter<Adapterviewdata.ViewHo
 
 
         holder.judul.setText(example.getTitle());
-//        holder.gambar.setImageURI(Uri.parse(examples.get(position).getThumb()));
+//        holder.gambar.setImageURI(Uri.parse(example.getThumb()));
         holder.waktu.setText(example.getTimes());
         holder.porsi.setText(example.getPortion());
         holder.tingkat.setText(example.getDificulty());
@@ -64,7 +65,7 @@ public class Adapterviewdata extends RecyclerView.Adapter<Adapterviewdata.ViewHo
                 intent.putExtra("porsi",example.getPortion());
                 intent.putExtra("kesulitan",example.getDificulty());
                 intent.putExtra("waktu",example.getTimes());
-                intent.putExtra("bg",example.getThumb());
+                intent.putExtra("gambar",example.getThumb());
 
                 context.startActivity(intent);
             }
@@ -92,7 +93,7 @@ public class Adapterviewdata extends RecyclerView.Adapter<Adapterviewdata.ViewHo
             super(itemView);
             judul = itemView.findViewById(R.id.tvTitleRecipe);
             relativeCategories = itemView.findViewById(R.id.cvListRecipe);
-            gambar = itemView.findViewById(R.id.gambartampil);
+            gambar = itemView.findViewById(R.id.gambarni);
             porsi = itemView.findViewById(R.id.tvPortion);
             waktu = itemView.findViewById(R.id.tvTimes);
             tingkat = itemView.findViewById(R.id.tvDificulty);
