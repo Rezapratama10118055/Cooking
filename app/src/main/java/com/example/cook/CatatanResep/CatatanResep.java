@@ -1,5 +1,6 @@
 package com.example.cook.CatatanResep;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,9 +12,12 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.cook.LoginActivity;
 import com.example.cook.R;
 import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -42,12 +46,9 @@ public class CatatanResep extends AppCompatActivity implements View.OnClickListe
 
 
         //Inisialisasi ID (Button)
-        Logout = findViewById(R.id.logout);
-        Logout.setOnClickListener(this);
+
         Simpan = findViewById(R.id.save);
         Simpan.setOnClickListener(this);
-        Login = findViewById(R.id.login);
-        Login.setOnClickListener(this);
         ShowData = findViewById(R.id.showdata);
         ShowData.setOnClickListener(this);
 
@@ -60,28 +61,29 @@ public class CatatanResep extends AppCompatActivity implements View.OnClickListe
 
         if(mAuth.getCurrentUser() == null){
             defaultUI();
+
         }else {
             updateUI();
         }
     }
 
     private void defaultUI() {
-        Login.setEnabled(true);
+
         Simpan.setEnabled(true);
         ShowData.setEnabled(true);
         TXT_Judul.setEnabled(true);
         TXT_Bahan.setEnabled(true);
         TXT_Langkah.setEnabled(true);
-        Logout.setEnabled(false);
+
     }
     private void updateUI(){
-        Login.setEnabled(false);
+
         Simpan.setEnabled(true);
         ShowData.setEnabled(true);
         TXT_Judul.setEnabled(true);
         TXT_Bahan.setEnabled(true);
         TXT_Langkah.setEnabled(true);
-        Logout.setEnabled(true);
+
         progressBar.setVisibility(View.GONE);
 
     }
@@ -114,23 +116,14 @@ public class CatatanResep extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.login:
-                // Statement program untuk login/masuk
-                startActivityForResult(AuthUI.getInstance()
-                                .createSignInIntentBuilder()
-
-                                //Memilih Provider atau Method masuk yang akan kita gunakan
-                                .setAvailableProviders(Collections.singletonList(new AuthUI.IdpConfig.GoogleBuilder().build()))
-                                .setIsSmartLockEnabled(false)
-                                .build(),
-                        RC_SIGN_IN);
-                progressBar.setVisibility(View.VISIBLE);
-                break;
 
             case R.id.save:
 
 
                 mAuth = FirebaseAuth.getInstance();
+                mAuth.getCurrentUser();
+
+
 
                 String getUserID = mAuth.getCurrentUser().getUid();
 

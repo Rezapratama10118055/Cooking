@@ -17,6 +17,7 @@
         android:id="@+id/tvSteps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/candal"
         android:textColor="@color/colorAccent"
         android:textSize="16sp" />
 

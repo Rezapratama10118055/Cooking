@@ -12,7 +12,8 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.Cook">
-        <activity android:name=".CatatanResep.updateData"></activity>
+        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".CatatanResep.updateData" />
         <activity android:name=".CatatanResep.mylist" />
         <activity android:name=".CatatanResep.CatatanResep" />
         <activity android:name=".Viewpager.ViewPageActivity" />
@@ -20,17 +21,13 @@
         <activity android:name=".PenjelasanDetail" />
         <activity android:name=".FavoriteActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".LoginActivity" >
-
-
-        </activity>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
         <meta-data

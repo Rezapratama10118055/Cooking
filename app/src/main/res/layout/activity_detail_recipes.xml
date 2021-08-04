@@ -95,7 +95,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/bg_circle"
                         android:padding="5dp"
-                        android:src="@drawable/ic_dificulty" />
+                        android:src="@drawable/star" />
 
                     <TextView
                         android:id="@+id/tvDificulty"
@@ -128,7 +128,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/bg_circle"
                         android:padding="5dp"
-                        android:src="@drawable/ic_portion" />
+                        android:src="@drawable/portions" />
 
                     <TextView
                         android:id="@+id/tvPortion"
@@ -162,7 +162,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/bg_circle"
                         android:padding="5dp"
-                        android:src="@drawable/ic_times" />
+                        android:src="@drawable/wallclock" />
 
                     <TextView
                         android:id="@+id/tvTimes"
@@ -215,6 +215,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="20dp"
                                 android:layout_marginBottom="20dp"
+                                android:fontFamily="@font/archivo_narrow"
                                 android:text="Deskripsi :"
                                 android:textColor="@color/colorPrimaryDark"
                                 android:textSize="16sp" />

@@ -14,9 +14,9 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="58dp"
-        android:background="@drawable/bg_rounded"
+        android:background="@drawable/bg_search"
         android:text="Hasil Pencarian Resep"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold" />
 

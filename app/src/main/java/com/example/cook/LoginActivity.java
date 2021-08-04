@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,22 +14,28 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.util.Collections;
 
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity  {
 
-    private EditText NIM, Nama, Jurusan;
-
-    private ProgressBar progressBar;
-    private FirebaseAuth mAuth;
-    private Button Logoutgoogle, Simpan, Logingoogle, ShowData;
-
-    private int RC_SIGN_IN = 1;
+    EditText emailLogin,passwordLogin;
+    Button Login,Register;
+    ProgressBar progressBarLogin;
+    FirebaseAuth firebaseAuth;
 
 
 
@@ -37,100 +44,40 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        progressBar = findViewById(R.id.progressLogin);
-        progressBar.setVisibility(View.GONE);
-
-
-        //Inisialisasi ID (Button)
-
-
-        Logingoogle = findViewById(R.id.logingoogle);
-        Logingoogle.setOnClickListener(this);
-        Logoutgoogle = findViewById(R.id.logoutgoogle);
-        Logoutgoogle.setOnClickListener(this);
-
-
-        mAuth = FirebaseAuth.getInstance(); //Mendapakan Instance Firebase Autentifikasi
-
-
-
-        if(mAuth.getCurrentUser() == null){
-            defaultUI();
-        }else {
-            updateUI();
-        }
-    }
-
-    private void defaultUI() {
-        Logingoogle.setEnabled(true);
-        Logoutgoogle.setEnabled(false);
-
-    }
-    private void updateUI(){
-        Logoutgoogle.setEnabled(true);
-        Logingoogle.setEnabled(false);
-        progressBar.setVisibility(View.GONE);
-
-    }
-
-    private boolean isEmpty(String s){
-        return TextUtils.isEmpty(s);
-    }
-
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        // RC_SIGN_IN adalah kode permintaan yang Anda berikan ke startActivityForResult, saat memulai masuknya arus.
-        if (requestCode == RC_SIGN_IN) {
-
-            //Berhasil masuk
-            if (resultCode == RESULT_OK) {
-                Toast.makeText(LoginActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
-                updateUI();
-            } else {
-                progressBar.setVisibility(View.GONE);
-                Toast.makeText(LoginActivity.this, "Login Dibatalkan", Toast.LENGTH_SHORT).show();
-
+        emailLogin = findViewById(R.id.edtEmailLogin);
+        passwordLogin = findViewById(R.id.edtPasswordLogin);
+        progressBarLogin = findViewById(R.id.progressBarLogin);
+        firebaseAuth = firebaseAuth.getInstance();
+        Register = findViewById(R.id.btnRegister1);
+        Register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(intent);
             }
-        }
-    }
+        });
+        Login = findViewById(R.id.btnLogin);
+        Login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progressBarLogin.setVisibility(View.VISIBLE);
+                firebaseAuth.signInWithEmailAndPassword(emailLogin.getText().toString(),passwordLogin.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressBarLogin.setVisibility(View.GONE);
+                        if(task.isSuccessful()){
+                            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                            startActivity(intent);
+                        }else{
+                            Toast.makeText(LoginActivity.this,task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+            }
+        });
 
-
-
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.logingoogle:
-                // Statement program untuk login/masuk
-                startActivityForResult(AuthUI.getInstance()
-                                .createSignInIntentBuilder()
-
-                                //Memilih Provider atau Method masuk yang akan kita gunakan
-                                .setAvailableProviders(Collections.singletonList(new AuthUI.IdpConfig.GoogleBuilder().build()))
-                                .setIsSmartLockEnabled(false)
-                                .build(),
-                        RC_SIGN_IN);
-                progressBar.setVisibility(View.VISIBLE);
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                break;
-
-
-            case R.id.logoutgoogle:
-                // Statement program untuk logout/keluar
-                AuthUI.getInstance()
-                        .signOut(this)
-                        .addOnCompleteListener(new OnCompleteListener() {
-                            @Override
-                            public void onComplete(@NonNull Task task) {
-                                Toast.makeText(LoginActivity.this, "Logout Berhasil", Toast.LENGTH_SHORT).show();
-                                finish();
-                            }
-                        });
-                break;
-
-
-
-        }
     }
 }
+
+
+

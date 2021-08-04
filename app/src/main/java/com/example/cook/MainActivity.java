@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -22,6 +24,8 @@ import com.example.cook.CatatanResep.CatatanResep;
 import com.example.cook.Model.Example;
 import com.example.cook.Model.Result;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 import java.util.List;
@@ -38,11 +42,13 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter Adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ApiService apiService;
-
+    ImageButton Logout;
     private List<Example> item_makans;
     Adapterviewdata adapter;
     CatagoriResep adpter1;
     public static MainActivity ma;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
 
 
     @Override
@@ -55,6 +61,17 @@ public class MainActivity extends AppCompatActivity {
         waktu = findViewById(R.id.waktu_pencarian);
         porsi = findViewById(R.id.porsi);
         tingkat = findViewById(R.id.tingkat);
+        Logout = findViewById(R.id.btnlogout);
+        firebaseAuth =firebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        Logout.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          FirebaseAuth.getInstance().signOut();
+                                          Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                                          startActivity(intent);
+                                      }
+                                  });
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));

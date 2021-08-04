@@ -13,11 +13,11 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_marginTop="100dp"
-            android:layout_width="231dp"
-            android:layout_height="211dp"
+            android:layout_width="230dp"
+            android:layout_height="266dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_baseline_fastfood_24" />
+            android:layout_marginTop="100dp"
+            android:src="@drawable/masalapapad" />
 
         <TextView
             android:id="@+id/textView"
@@ -26,8 +26,21 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:text="ResepBook"
-            android:textSize="24sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="30sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Apps"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="30sp"
+            android:textStyle="bold|italic" />
+
 
     </LinearLayout>
 

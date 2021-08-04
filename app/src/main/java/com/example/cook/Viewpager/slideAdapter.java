@@ -22,8 +22,8 @@ public class slideAdapter extends PagerAdapter {
       this.context=context;
   }
   public int[] slide_gambar = {
-          R.drawable.reading,
-          R.drawable.book,
+          R.drawable.harvest,
+          R.drawable.salad,
           R.drawable.man
   };
   public String[] slide_judul = {

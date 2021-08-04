@@ -12,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.cook.LoginActivity;
-import com.example.cook.MainActivity;
 import com.example.cook.R;
 
 public class ViewPageActivity extends AppCompatActivity {
